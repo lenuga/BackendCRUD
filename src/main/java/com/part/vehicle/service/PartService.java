@@ -37,11 +37,10 @@ public class PartService {
     }
     public Part updatePart(Part part)
     {
-//        Part exisitingPart = partRepository.findById(part.getId());
-//        exisitingPart.setPartName(part.getPartName());
-//        exisitingPart.setPrice.getPrice());
+        Optional<Part> exisitingPart = partRepository.findById(part.getId());
+        exisitingPart.get().setPartName(part.getPartName());
+        exisitingPart.get().setPrice(part.getPrice());
 
-        Part exisitingPart = new Part();
-        return partRepository.save(exisitingPart);
+        return partRepository.save(exisitingPart.get());
     }
 }
